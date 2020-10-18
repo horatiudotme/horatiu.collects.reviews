@@ -1,0 +1,28 @@
+---
+seoTitle: collects.reviews
+---
+
+{% from "blocks/blocks.njk" import reviewBlock with context %}
+
+{% set counters = {} %}
+
+<ul class="cr-list--unstyled">
+  {% for app, reviewsByApp in reviews -%}
+    {# <hr><h2>{{ app }}</h2> #}
+    {% for appEdition, reviewsByAppEdition in reviewsByApp -%}
+      {# <hr><h3>{{ app }} - {{ appEdition }}</h3> #}
+      {%- for reviewType, reviewsByType in reviewsByAppEdition -%}
+        {# <hr><h4>{{ app }} - {{ appEdition }} - {{ reviewType }}</h4> #}
+        {%- for reviewsByYear in reviewsByType -%}
+          {%- for review in reviewsByYear -%}
+            {{- reviewBlock(review, reviewType, apps[app][appEdition]) -}}
+            {%- set counters = counters | incrementAttribute(reviewType) -%}
+          {%- endfor -%}
+        {%- endfor -%}
+      {%- endfor -%}
+    {%- endfor %}
+  {%- endfor %}
+</ul>
+
+{{ counters | dump }}
+
