@@ -4,6 +4,8 @@ seoTitle: collects.reviews
 
 {% from "blocks/blocks.njk" import reviewBlock with context %}
 
+<mwc-fab id="shuffleFAB" icon="shuffle"></mwc-fab>
+
 {% set counters = {} %}
 
 <ul id="reviewsList" class="cr-list--unstyled">
@@ -23,8 +25,6 @@ seoTitle: collects.reviews
     {%- endfor %}
   {%- endfor %}
 </ul>
-
-<mwc-fab id="shuffleFAB" icon="shuffle"></mwc-fab>
 
 {{ counters | dump }}
 
