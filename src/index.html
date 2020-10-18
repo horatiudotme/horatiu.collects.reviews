@@ -6,7 +6,7 @@ seoTitle: collects.reviews
 
 {% set counters = {} %}
 
-<ul class="cr-list--unstyled">
+<ul id="reviewsList" class="cr-list--unstyled">
   {% for app, reviewsByApp in reviews -%}
     {# <hr><h2>{{ app }}</h2> #}
     {% for appEdition, reviewsByAppEdition in reviewsByApp -%}
@@ -23,6 +23,8 @@ seoTitle: collects.reviews
     {%- endfor %}
   {%- endfor %}
 </ul>
+
+<mwc-fab id="shuffleFAB" icon="shuffle"></mwc-fab>
 
 {{ counters | dump }}
 

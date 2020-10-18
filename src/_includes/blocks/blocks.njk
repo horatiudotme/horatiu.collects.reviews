@@ -2,26 +2,15 @@
   <li data-review-type="{{ reviewType }}" {{ "data-fav" if review.fav }}>
     <blockquote class="cr-blockquote" cite="{{ review.url }}">
       <header class="cr-blockquote__header">
-        <a href="{{ app.homeUrl }}" target="_blank">
-          # {{ app.name | safe }}
-        </a>
+        <a href="{{ app.homeUrl }}" target="_blank"># {{ app.name | safe }}</a>
       </header>
       <p class="cr-blockquote__text">{{ review.quote | safe }}</p>
       <footer class="cr-blockquote__footer">
-
-
-        {# <div class="cr-blockquote__source">
-          {{ (review.sourceLine if review.sourceLine else review.source) | safe }}
-        </div> #}
         <div class="cr-blockquote__source">
-          {{ (review.sourceLine if review.sourceLine else review.source) | safe }}
-        </div>
-
-        {# <div class="cr-blockquote__hostname">
           <a href="{{ review.url }}" target="_blank">
-            {{ review.hostname if review.hostname else review.url | wwwlessHostname }}
+            {{ (review.sourceLine if review.sourceLine else review.source) | safe }}
           </a>
-        </div> #}
+        </div>
       </footer>
     </blockquote>
   </li>

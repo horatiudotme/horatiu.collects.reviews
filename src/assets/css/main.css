@@ -141,3 +141,7 @@ i[data-emoji] {
   filter: grayscale(1);
   font-style: normal;
 }
+
+mwc-fab {
+  --mdc-theme-secondary: black;
+}
