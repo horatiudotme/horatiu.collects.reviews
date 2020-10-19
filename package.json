@@ -30,6 +30,7 @@
     "@material/mwc-fab": "^0.19.1",
     "@material/mwc-icon-button": "^0.19.1",
     "@material/mwc-list": "^0.19.1",
+    "@material/mwc-tab-bar": "^0.19.1",
     "@material/mwc-top-app-bar": "^0.19.1",
     "@material/mwc-top-app-bar-fixed": "^0.19.1"
   }

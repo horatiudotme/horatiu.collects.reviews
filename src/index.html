@@ -1,14 +1,17 @@
 ---
-seoTitle: collects.reviews
+eleventyComputed:
+  seoTitle: "{{ metadata.title }}"
+
+seoDescription: What others are saying about my apps (keep me going forward)
 ---
 
 {% from "blocks/blocks.njk" import reviewBlock with context %}
 
-<mwc-fab id="shuffleFAB" icon="shuffle"></mwc-fab>
+<!-- <mwc-fab id="shuffleFAB" icon="grading"></mwc-fab> -->
 
 {% set counters = {} %}
 
-<ul id="reviewsList" class="cr-list--unstyled">
+<ul id="reviewList" class="hcr-review-list" data-filter="0">
   {% for app, reviewsByApp in reviews -%}
     {# <hr><h2>{{ app }}</h2> #}
     {% for appEdition, reviewsByAppEdition in reviewsByApp -%}

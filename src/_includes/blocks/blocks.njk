@@ -1,17 +1,7 @@
 {% macro reviewBlock(review, reviewType, app) %}
-  <li data-review-type="{{ reviewType }}" {{ "data-fav" if review.fav }}>
-    <blockquote class="cr-blockquote" cite="{{ review.url }}">
-      <header class="cr-blockquote__header">
-        <a href="{{ app.homeUrl }}" target="_blank"># {{ app.name | safe }}</a>
-      </header>
-      <p class="cr-blockquote__text">{{ review.quote | safe }}</p>
-      <footer class="cr-blockquote__footer">
-        <div class="cr-blockquote__source">
-          <a href="{{ review.url }}" target="_blank">
-            {{ (review.sourceLine if review.sourceLine else review.source) | safe }}
-          </a>
-        </div>
-      </footer>
-    </blockquote>
+  <li data-type="{{ reviewType }}"{{ " data-fav" if review.fav }}>
+    <a href="{{ app.homeUrl }}" target="_blank"># {{ app.name | safe }}</a>
+    <p>{{ review.quote | safe }}</p>
+    <a href="{{ review.url }}" target="_blank">{{ (review.sourceLine if review.sourceLine else review.source) | safe }}</a>
   </li>
 {% endmacro %}

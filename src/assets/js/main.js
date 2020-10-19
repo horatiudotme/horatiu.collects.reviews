@@ -4,19 +4,22 @@ import '@material/mwc-fab';
 import '@material/mwc-icon-button';
 import '@material/mwc-list/mwc-list-item.js';
 import '@material/mwc-list/mwc-list.js';
+import '@material/mwc-tab-bar';
+import '@material/mwc-tab';
 import '@material/mwc-top-app-bar-fixed';
+
+const reviewList = document.getElementById('reviewList');
 
 function shuffleReviews() {
   // Randomize the order of all quotes, using a Fisherâ€“Yates shuffle
   // based on http://stackoverflow.com/a/11972692/220039
-  var quotes = document.getElementById('reviewsList');
-  for (var i = quotes.children.length; i >= 0; i--) {
-      quotes.appendChild(quotes.children[Math.random() * i | 0]);
+  for (var i = reviewList.children.length; i >= 0; i--) {
+      reviewList.appendChild(reviewList.children[Math.random() * i | 0]);
   }
 
   // Make sure the first quote is always a (random) favorite quote
   var favQuotes = document.querySelectorAll('[data-fav]');
-  quotes.insertBefore(favQuotes[Math.random() * favQuotes.length | 0], quotes.firstChild);
+  reviewList.insertBefore(favQuotes[Math.random() * favQuotes.length | 0], reviewList.firstChild);
 }
 
 
@@ -29,10 +32,16 @@ if (drawer) {
 }
 
 // Shuffle reviews when the Shuffle FAB is clicked
-const shuffleFAB = document.getElementById('shuffleFAB');
-shuffleFAB.addEventListener('click', () => {
+const shuffleButton = document.getElementById('shuffleButton');
+shuffleButton.addEventListener('click', () => {
   shuffleReviews();
+});
+
+const reviewTypeTabBar = document.getElementById('reviewTypeTabBar');
+reviewTypeTabBar.addEventListener('MDCTabBar:activated', (e) => {
+  reviewList.dataset.filter = e.detail.index;
 });
 
 // Shuffle reviews on page load
 shuffleReviews();
+

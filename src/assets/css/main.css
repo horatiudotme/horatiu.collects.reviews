@@ -1,4 +1,8 @@
-@import url(https://unpkg.com/@material/typography@7.0.0/dist/mdc.typography.css);
+/* @import url(https://unpkg.com/@material/typography@7.0.0/dist/mdc.typography.css); */
+
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
 
 html {
   --mdc-typography-font-family: "Roboto", sans-serif;
@@ -18,18 +22,8 @@ body {
 }
 
 a {
-  color: #000;
+  color: #212121;
   text-decoration: none;
-}
-
-a:hover {
-  /* color: #999; */
-  /* border-bottom: 1px solid; */
-  /* border: 1px solid;
-  padding: 0.5rem; */
-  /* padding: 0.5rem 0; */
-  /* text-decoration-line: underline overline;
-  text-decoration-style: dotted; */
 }
 
 p {
@@ -40,6 +34,11 @@ p {
 ul {
   margin: 0;
   padding: 0;
+}
+
+i[data-emoji] {
+  filter: grayscale(1);
+  font-style: normal;
 }
 
 
@@ -67,84 +66,91 @@ h3, .dva-h3 {
   letter-spacing: 0.0125em;
 }
 
-.cr-content-wrapper {
-  margin: 48px auto;
-  max-width: 840px;
-}
 
-@media(max-width: 1051px) {
-  .cr-content-wrapper {
-    margin: 48px 24px;
-  }
-}
-
-.cr-blockquote {
-  /* font-size: 1.375rem;
-  font-weight: 300;
-  letter-spacing: 0.002em;
-  line-height: 2.375rem; */
-
-  margin: 0 0 3rem 0;
-}
-
-
-.cr-blockquote__header {
-  font-size: 1.25rem;
-  line-height: 2rem;
-  font-weight: 300;
-  letter-spacing: 0.0125em;
-
-  /* margin-bottom: 0.25rem; */
-}
-
-.cr-blockquote__text {
-  /* line-height: 1.175; */
-  font-size: 2.125rem;
-  line-height: 2.5rem;
-  font-weight: 300;
-  letter-spacing: 0.0073529412em;
-
-  margin-bottom: 0.25rem;
-}
-
-[data-fav] .cr-blockquote__text {
-  font-weight: bold;
-}
-
-.cr-blockquote__footer {
-  font-size: 1.25rem;
-  line-height: 2rem;
-  font-weight: 300;
-  letter-spacing: 0.0125em;
-}
-
-.cr-blockquote__rating {
-  /* font-size: 80%; */
-}
-
-.cr-blockquote__source {
-  /* font-size: 60%; */
-  margin-bottom: 0.25rem;
-}
-
-.cr-blockquote__hostname {
-  /* font-size: 50%; */
-}
-
-
-.cr-list--unstyled {
-  padding-left: 0;
-  list-style: none;
-}
-
-i[data-emoji] {
-  filter: grayscale(1);
-  font-style: normal;
-}
+/* ==========================================================================
+   Material Design Web Components
+   ========================================================================== */
 
 mwc-fab {
   --mdc-theme-secondary: black;
   position: fixed;
   bottom: 1rem;
   right: 1rem;
+}
+
+mwc-tab-bar {
+  --mdc-theme-primary: white;
+  --mdc-typography-button-text-transform: none;
+  --mdc-tab-text-label-color-default: rgba(255, 255, 255, 0.7);
+  background-color: black;
+}
+
+
+/* ==========================================================================
+   Content
+   ========================================================================== */
+
+/*
+ * Content wrapper
+ */
+
+.hcr-content-wrapper {
+  margin: 48px auto;
+  max-width: 840px;
+}
+
+@media(max-width: 1051px) {
+  .hcr-content-wrapper {
+    margin: 48px 24px;
+  }
+}
+
+/*
+ * Reviews list
+ */
+
+.hcr-review-list {
+  list-style: none;
+}
+
+.hcr-review-list li {
+  margin: 0 0 3rem 0;
+}
+
+.hcr-review-list li a:first-child {
+  font-size: 1.25rem;
+  line-height: 2rem;
+  font-weight: 300;
+  letter-spacing: 0.0125em;
+}
+
+.hcr-review-list li p {
+  font-size: 2.125rem;
+  line-height: 2.5rem;
+  font-weight: 300;
+  letter-spacing: 0.0073529412em;
+  margin-bottom: 0.25rem;
+}
+
+.hcr-review-list li[data-fav] p {
+  font-weight: bold;
+}
+
+.hcr-review-list li a:hover {
+  text-decoration-line: underline;
+}
+
+.hcr-review-list li a:last-child {
+  font-size: 1.25rem;
+  line-height: 2rem;
+  font-weight: 300;
+  letter-spacing: 0.0125em;
+}
+
+.hcr-review-list[data-filter="1"] li[data-type="user"] {
+  display: none;
+}
+
+.hcr-review-list[data-filter="2"] li[data-type="media"] {
+  display: none;
 }
