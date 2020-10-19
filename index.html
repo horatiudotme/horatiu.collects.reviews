@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="/assets/css/main.css">
 </head>
 
-<body>
+<body data-filter="0">
 
   <mwc-drawer hasHeader type="modal">
     <span slot="title">horatiu.collects.reviews</span>
@@ -41,7 +41,7 @@
       <mwc-top-app-bar-fixed centerTitle>
         <mwc-icon-button slot="navigationIcon" icon="menu"></mwc-icon-button>
         <div slot="title">horatiu.collects.reviews</div>
-        <mwc-icon-button id="shuffleButton" slot="actionItems" icon="sort"></mwc-icon-button>
+        <mwc-icon-button id="shuffleButton" slot="actionItems" icon="casino" label="Shuffle reviews" title="Shuffle reviews"></mwc-icon-button>
 
         <mwc-tab-bar id="reviewTypeTabBar">
           <mwc-tab label="all"></mwc-tab>
@@ -51,16 +51,18 @@
       </mwc-top-app-bar-fixed>
       <div>
         <!-- content -->
-        <main class="hcr-content-wrapper">
-          
+        
 
 
 <!-- <mwc-fab id="shuffleFAB" icon="grading"></mwc-fab> -->
 
 
 
-<ul id="reviewList" class="hcr-review-list" data-filter="0">
-  
+<main class="hcr-content-wrapper">
+
+  <h1><span>All</span><span>Media</span><span>User</span> Reviews</h1>
+
+  <ul id="reviewList" class="hcr-review-list">
     
   <li data-type="media">
     <a href="https://www.appliberated.com/beepchecker/windows/" target="_blank"># BeepChecker</a>
@@ -80,7 +82,6 @@
     <a href="http://www.rockybytes.com/beepchecker" target="_blank">Rocky Bytes Score: Very Good!</a>
   </li>
 
-    
   <li data-type="media">
     <a href="https://www.appgramming.com/framedummy/" target="_blank"># FrameDummy</a>
     <p>Anyone can make a fake, dummy window with this unique software. ... It can be a photo frame melt into the wallpaper, or a prank window.</p>
@@ -105,7 +106,6 @@
     <a href="https://www.freeware.de/download/framedummy/" target="_blank">freeware.de</a>
   </li>
 
-    
   <li data-type="media" data-fav>
     <a href="https://www.appgramming.com/lonecolor/android/" target="_blank"># LoneColor for Android</a>
     <p>One of the most simplistic and cleverly designed apps we've seen in a long time.</p>
@@ -154,7 +154,6 @@
     <a href="http://www.download3k.com/Desktop-Enhancements/Themes-wallpapers/Download-LoneColor.html" target="_blank">Download3K Editor's Review: Excellent</a>
   </li>
 
-    
   <li data-type="media" data-fav>
     <a href="https://www.tecdrop.com/pitchblackwallpaper/" target="_blank"># Pitch Black Wallpaper</a>
     <p>A great app that you'll have no trouble using, and will definitely help with your device performance and battery drain. Don't think about it - try it out!</p>
@@ -1691,12 +1690,17 @@
     <a href="https://play.google.com/store/apps/details?id=com.tecdrop.pitchblackwallpaper" target="_blank">Lydia Wyn Mcguire</a>
   </li>
 
-</ul>
+  </ul>
 
-{&quot;media&quot;:15,&quot;user&quot;:256}
+  
+
+</main>
+
+<footer class="hcr-site-footer">
+  <p class="hcr-mb-0">15 + 256 = 271</p>
+</footer>
 
 
-        </main>
       </div>
     </div>
   </mwc-drawer>
