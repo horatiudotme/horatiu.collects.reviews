@@ -11,23 +11,30 @@ seoDescription: What others are saying about my apps (keep me going forward)
 
 {% set counters = {} %}
 
-<ul id="reviewList" class="hcr-review-list" data-filter="0">
-  {% for app, reviewsByApp in reviews -%}
-    {# <hr><h2>{{ app }}</h2> #}
-    {% for appEdition, reviewsByAppEdition in reviewsByApp -%}
-      {# <hr><h3>{{ app }} - {{ appEdition }}</h3> #}
-      {%- for reviewType, reviewsByType in reviewsByAppEdition -%}
-        {# <hr><h4>{{ app }} - {{ appEdition }} - {{ reviewType }}</h4> #}
-        {%- for reviewsByYear in reviewsByType -%}
-          {%- for review in reviewsByYear -%}
-            {{- reviewBlock(review, reviewType, apps[app][appEdition]) -}}
-            {%- set counters = counters | incrementAttribute(reviewType) -%}
+<main class="hcr-content-wrapper">
+
+  <h1><span>All</span><span>Media</span><span>User</span> Reviews</h1>
+
+  <ul id="reviewList" class="hcr-review-list">
+    {% for app, reviewsByApp in reviews -%}
+      {% for appEdition, reviewsByAppEdition in reviewsByApp -%}
+        {%- for reviewType, reviewsByType in reviewsByAppEdition -%}
+          {%- for reviewsByYear in reviewsByType -%}
+            {%- for review in reviewsByYear -%}
+              {{- reviewBlock(review, reviewType, apps[app][appEdition]) -}}
+              {%- set counters = counters | incrementAttribute(reviewType) -%}
+            {%- endfor -%}
           {%- endfor -%}
         {%- endfor -%}
-      {%- endfor -%}
+      {%- endfor %}
     {%- endfor %}
-  {%- endfor %}
-</ul>
+  </ul>
 
-{{ counters | dump }}
+  {# {{ counters | dump }} #}
+
+</main>
+
+<footer class="hcr-site-footer">
+  <p class="hcr-mb-0">{{ counters.media }} + {{ counters.user }} = {{ counters.media + counters.user }}</p>
+</footer>
 

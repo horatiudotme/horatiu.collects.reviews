@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="/assets/css/main.css">
 </head>
 
-<body>
+<body data-filter="0">
 
   <mwc-drawer hasHeader type="modal">
     <span slot="title">{{ metadata.title }}</span>
@@ -27,7 +27,7 @@
       <mwc-top-app-bar-fixed centerTitle>
         <mwc-icon-button slot="navigationIcon" icon="menu"></mwc-icon-button>
         <div slot="title">{{ metadata.title }}</div>
-        <mwc-icon-button id="shuffleButton" slot="actionItems" icon="sort"></mwc-icon-button>
+        <mwc-icon-button id="shuffleButton" slot="actionItems" icon="casino" label="Shuffle reviews" title="Shuffle reviews"></mwc-icon-button>
 
         <mwc-tab-bar id="reviewTypeTabBar">
           <mwc-tab label="all"></mwc-tab>
@@ -37,9 +37,7 @@
       </mwc-top-app-bar-fixed>
       <div>
         <!-- content -->
-        <main class="hcr-content-wrapper">
-          {{ content | safe }}
-        </main>
+        {{ content | safe }}
       </div>
     </div>
   </mwc-drawer>

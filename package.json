@@ -25,7 +25,6 @@
     "rollup-plugin-terser": "^7.0.2"
   },
   "dependencies": {
-    "@material/mwc-button": "^0.19.1",
     "@material/mwc-drawer": "^0.19.1",
     "@material/mwc-fab": "^0.19.1",
     "@material/mwc-icon-button": "^0.19.1",
