@@ -41,12 +41,28 @@ i[data-emoji] {
   font-style: normal;
 }
 
-/* Based on .mdc-typography--headline1 */
+/* Based on .mdc-typography--headline1
 h1 {
   font-size: 6rem;
   line-height: 6rem;
   font-weight: 300;
   letter-spacing: -0.015625em;
+} */
+
+/* Based on .mdc-typography--headline2 */
+h1 {
+  font-size: 3.75rem;
+  line-height: 3.75rem;
+  font-weight: 300;
+  letter-spacing: -0.0083333333em;
+}
+
+/* Based on .mdc-typography--headline3 */
+h2 {
+  font-size: 3rem;
+  line-height: 3.125rem;
+  font-weight: 400;
+  letter-spacing: normal;
 }
 
 
@@ -89,22 +105,30 @@ mwc-tab-bar {
 }
 
 /*
- * Content title
+ * Content titles
  */
 
-h1 span {
+.app-title {
+  margin: 1rem 0 .5rem 0;
+}
+
+.type-title {
+  margin: 0 0 3rem 0;
+}
+
+.type-title span {
   display: none;
 }
 
-[data-filter="0"] h1 span:first-child {
+[data-filter="0"] .type-title span:first-child {
   display: inline;
 }
 
-[data-filter="1"] h1 span:nth-child(2) {
+[data-filter="1"] .type-title span:nth-child(2) {
   display: inline;
 }
 
-[data-filter="2"] h1 span:nth-child(3) {
+[data-filter="2"] .type-title span:nth-child(3) {
   display: inline;
 }
 
