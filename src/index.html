@@ -5,9 +5,7 @@ eleventyComputed:
 seoDescription: What others are saying about my apps (keep me going forward)
 ---
 
-{% from "blocks/blocks.njk" import appReviewList with context %}
-
-{% set counters = {} %}
+{% from "blocks/blocks.njk" import appReviewList, countAllAppReviews with context %}
 
 <main class="hcr-content-wrapper">
 
@@ -16,13 +14,13 @@ seoDescription: What others are saying about my apps (keep me going forward)
 
   <ul id="reviewList" class="hcr-review-list">
     {% for app, appReviews in reviews -%}
-      {{ appReviewList(app, reviews[app], counters, true) }}
+      {{ appReviewList(app, reviews[app], true) }}
     {%- endfor %}
   </ul>
 
 </main>
 
 <footer class="hcr-site-footer">
-  <p class="hcr-mb-0">{{ counters.media }} + {{ counters.user }} = {{ counters.media + counters.user }}</p>
+  {{ countAllAppReviews() }}
 </footer>
 

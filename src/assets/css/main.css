@@ -218,3 +218,7 @@ mwc-tab-bar {
 .hcr-mb-0 {
   margin-bottom: 0;
 }
+
+.hcr-title-link {
+  color: inherit;
+}

@@ -6,7 +6,7 @@
   </li>
 {% endmacro %}
 
-{% macro appReviewList(app, appReviews, counters, isHomePage) %}
+{% macro appReviewList(app, appReviews, isHomePage) %}
   {% for appEdition, appEditionReviews in appReviews -%}
 
     {% set appName = apps[app][appEdition].name %}
@@ -16,7 +16,6 @@
       {%- for yearReviews in reviewTypeReviews -%}
         {%- for review in yearReviews -%}
           {{- reviewBlock(review, reviewType, appName, appUrl, not isHomePage) -}}
-          {%- set counters = counters | incrementAttribute(reviewType) -%}
         {%- endfor -%}
       {%- endfor -%}
     {%- endfor -%}
@@ -25,6 +24,7 @@
 
 {% macro countAppReviews(app) %}
   {% set counters = { media: 0, user: 0 } %}
+
   {% for appEdition, appEditionReviews in reviews[app] -%}
     {%- for reviewType, reviewTypeReviews in appEditionReviews -%}
       {%- for yearReviews in reviewTypeReviews -%}
@@ -34,6 +34,24 @@
       {%- endfor -%}
     {%- endfor -%}
   {%- endfor %}
-  {# {{ counters.media + counters.user }} reviews ({{ counters.media }} media, {{ counters.user }} user) #}
+
+  {{ counters.media + counters.user }} = {{ counters.media }} + {{ counters.user }}
+{% endmacro %}
+
+{% macro countAllAppReviews() %}
+  {% set counters = { media: 0, user: 0 } %}
+
+  {% for app, appReviews in reviews -%}
+    {% for appEdition, appEditionReviews in appReviews -%}
+      {%- for reviewType, reviewTypeReviews in appEditionReviews -%}
+        {%- for yearReviews in reviewTypeReviews -%}
+          {%- for review in yearReviews -%}
+            {%- set counters = counters | incrementAttribute(reviewType) -%}
+          {%- endfor -%}
+        {%- endfor -%}
+      {%- endfor -%}
+    {%- endfor %}
+  {%- endfor %}
+
   {{ counters.media + counters.user }} = {{ counters.media }} + {{ counters.user }}
 {% endmacro %}

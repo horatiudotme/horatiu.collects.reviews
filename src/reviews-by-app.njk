@@ -6,9 +6,7 @@ pagination:
 permalink: "{{ app | slug }}/"
 ---
 
-{% from "blocks/blocks.njk" import appReviewList with context %}
-
-{% set counters = {} %}
+{% from "blocks/blocks.njk" import appReviewList, countAppReviews with context %}
 
 <main class="hcr-content-wrapper">
 
@@ -16,11 +14,11 @@ permalink: "{{ app | slug }}/"
   <h2 class="hcr-type-title"><span></span><span>Media</span><span>User</span> Reviews</h2>
 
   <ul id="reviewList" class="hcr-review-list">
-    {{ appReviewList(app, reviews[app], counters, false) }}
+    {{ appReviewList(app, reviews[app], false) }}
   </ul>
 
 </main>
 
 <footer class="hcr-site-footer">
-  <p class="hcr-mb-0">{{ counters.media }} + {{ counters.user }} = {{ counters.media + counters.user }}</p>
+  {{ countAppReviews(app) }}
 </footer>
