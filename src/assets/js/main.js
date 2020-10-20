@@ -16,9 +16,11 @@ function shuffleReviews() {
       reviewList.appendChild(reviewList.children[Math.random() * i | 0]);
   }
 
-  // Make sure the first quote is always a (random) favorite quote
+  // Make sure the first quote is always a (random) favorite quote, if we have enough favorites to cycle through
   const favQuotes = document.querySelectorAll('[data-fav]');
-  reviewList.insertBefore(favQuotes[Math.random() * favQuotes.length | 0], reviewList.firstChild);
+  if (favQuotes.length >= 5) {
+    reviewList.insertBefore(favQuotes[Math.random() * favQuotes.length | 0], reviewList.firstChild);
+  }
 }
 
 // Initialize the drawer
