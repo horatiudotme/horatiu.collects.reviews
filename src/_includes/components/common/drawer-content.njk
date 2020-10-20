@@ -1,3 +1,5 @@
+{% from "blocks/blocks.njk" import countAppReviews with context %}
+
 <mwc-list>
   {# Home link #}
   <a href="https://horatiu.me" target="_blank">
@@ -9,10 +11,14 @@
   </a>
 
   {# App links #}
-  {# {% for page in collections.drawerApps %}
-    <a href="{{ page.url }}">
-      <mwc-list-item>{{ page.data.title }}</mwc-list-item>
+  <h2 class="hcr-drawer-subtitle">By App</h2>
+  {% for app, appEditions in apps | dictsort %}
+    <a href="/{{ app }}/">
+      <mwc-list-item twoline="twoline">
+        <span>{{ appEditions.default.name }}</span>
+        <span slot="secondary">{{ countAppReviews(app) }}</span>
+      </mwc-list-item>
     </a>
-  {% endfor %} #}
+  {% endfor %}
 
 </mwc-list>

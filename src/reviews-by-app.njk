@@ -12,8 +12,8 @@ permalink: "{{ app | slug }}/"
 
 <main class="hcr-content-wrapper">
 
-  <h1 class="app-title">{{ apps[app].default.name }}</h1>
-  <h2 class="type-title"><span></span><span>Media</span><span>User</span> Reviews</h2>
+  <h1 class="hcr-app-title">{{ apps[app].default.name }}</h1>
+  <h2 class="hcr-type-title"><span></span><span>Media</span><span>User</span> Reviews</h2>
 
   <ul id="reviewList" class="hcr-review-list">
     {{ appReviewList(app, reviews[app], counters, false) }}

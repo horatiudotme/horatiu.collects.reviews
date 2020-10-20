@@ -22,3 +22,18 @@
     {%- endfor -%}
   {%- endfor %}
 {% endmacro %}
+
+{% macro countAppReviews(app) %}
+  {% set counters = { media: 0, user: 0 } %}
+  {% for appEdition, appEditionReviews in reviews[app] -%}
+    {%- for reviewType, reviewTypeReviews in appEditionReviews -%}
+      {%- for yearReviews in reviewTypeReviews -%}
+        {%- for review in yearReviews -%}
+          {%- set counters = counters | incrementAttribute(reviewType) -%}
+        {%- endfor -%}
+      {%- endfor -%}
+    {%- endfor -%}
+  {%- endfor %}
+  {# {{ counters.media + counters.user }} reviews ({{ counters.media }} media, {{ counters.user }} user) #}
+  {{ counters.media + counters.user }} = {{ counters.media }} + {{ counters.user }}
+{% endmacro %}
