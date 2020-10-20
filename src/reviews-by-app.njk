@@ -1,8 +1,9 @@
 ---
-eleventyComputed:
-  seoTitle: "{{ metadata.title }}"
-
-seoDescription: What others are saying about my apps (keep me going forward)
+pagination:
+  data: reviews
+  size: 1
+  alias: app
+permalink: "{{ app | slug }}/"
 ---
 
 {% from "blocks/blocks.njk" import appReviewList with context %}
@@ -11,13 +12,11 @@ seoDescription: What others are saying about my apps (keep me going forward)
 
 <main class="hcr-content-wrapper">
 
-  <h1 class="app-title">All Apps</h1>
+  <h1 class="app-title">{{ apps[app].default.name }}</h1>
   <h2 class="type-title"><span></span><span>Media</span><span>User</span> Reviews</h2>
 
   <ul id="reviewList" class="hcr-review-list">
-    {% for app, appReviews in reviews -%}
-      {{ appReviewList(app, reviews[app], counters, true) }}
-    {%- endfor %}
+    {{ appReviewList(app, reviews[app], counters, false) }}
   </ul>
 
 </main>
@@ -25,4 +24,3 @@ seoDescription: What others are saying about my apps (keep me going forward)
 <footer class="hcr-site-footer">
   <p class="hcr-mb-0">{{ counters.media }} + {{ counters.user }} = {{ counters.media + counters.user }}</p>
 </footer>
-

@@ -1,7 +1,24 @@
-{% macro reviewBlock(review, reviewType, app) %}
+{% macro reviewBlock(review, reviewType, appName, appUrl, isExternalAppUrl) %}
   <li data-type="{{ reviewType }}"{{ " data-fav" if review.fav }}>
-    <a href="{{ app.homeUrl }}" target="_blank"># {{ app.name | safe }}</a>
+    <a href="{{ appUrl }}" {% if isExternalAppUrl %}target="_blank"{% endif %}># {{ appName }}</a>
     <p>{{ review.quote | safe }}</p>
     <a href="{{ review.url }}" target="_blank">{{ (review.sourceLine if review.sourceLine else review.source) | safe }}</a>
   </li>
+{% endmacro %}
+
+{% macro appReviewList(app, appReviews, counters, isHomePage) %}
+  {% for appEdition, appEditionReviews in appReviews -%}
+
+    {% set appName = apps[app][appEdition].name %}
+    {% set appUrl = ("/" + app + "/") if isHomePage else apps[app][appEdition].homeUrl %}
+  
+    {%- for reviewType, reviewTypeReviews in appEditionReviews -%}
+      {%- for yearReviews in reviewTypeReviews -%}
+        {%- for review in yearReviews -%}
+          {{- reviewBlock(review, reviewType, appName, appUrl, not isHomePage) -}}
+          {%- set counters = counters | incrementAttribute(reviewType) -%}
+        {%- endfor -%}
+      {%- endfor -%}
+    {%- endfor -%}
+  {%- endfor %}
 {% endmacro %}
