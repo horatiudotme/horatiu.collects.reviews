@@ -125,7 +125,15 @@ mwc-tab-bar {
  */
 
 .hcr-app-title {
+  /* overflow: hidden; */
   margin: 1rem 0 .5rem 0;
+}
+
+@media (max-width: 400px) {
+  h1.hcr-app-title {
+    font-size: 3rem;
+    line-height: 3rem;
+  }
 }
 
 .hcr-type-title {
