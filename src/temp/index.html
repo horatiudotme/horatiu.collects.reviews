@@ -1,0 +1,19 @@
+---
+---
+
+{% from "blocks/blocks.njk" import countAllAppReviews, countAppReviews with context %}
+
+<a href="/">
+  <mwc-list-item twoline="twoline">
+    <span>All Apps</span>
+    <span slot="secondary">{{ countAllAppReviews() }}</span>
+  </mwc-list-item>
+</a>
+{% for app, appEditions in apps | dictsort %}
+  <a href="/{{ app }}/">
+    <mwc-list-item twoline="twoline">
+      <span>{{ appEditions.default.name }}</span>
+      <span slot="secondary">{{ countAppReviews(app) }}</span>
+    </mwc-list-item>
+  </a>
+{% endfor %}

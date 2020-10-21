@@ -13,18 +13,14 @@
   {# App links #}
   <h2 class="hcr-drawer-subtitle">By App</h2>
   <a href="/">
-    <mwc-list-item twoline="twoline">
-      <span>All Apps</span>
-      <span slot="secondary">{{ countAllAppReviews() }}</span>
-    </mwc-list-item>
+    <mwc-list-item>All Apps (Home)</mwc-list-item>
   </a>
   {% for app, appEditions in apps | dictsort %}
     <a href="/{{ app }}/">
-      <mwc-list-item twoline="twoline">
-        <span>{{ appEditions.default.name }}</span>
-        <span slot="secondary">{{ countAppReviews(app) }}</span>
-      </mwc-list-item>
+      <mwc-list-item>{{ appEditions.default.name }}</mwc-list-item>
     </a>
   {% endfor %}
+
+  <mwc-list-item disabled><span>the rest are coming</span></mwc-list-item>
 
 </mwc-list>
