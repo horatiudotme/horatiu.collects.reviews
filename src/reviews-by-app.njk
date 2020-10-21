@@ -4,6 +4,9 @@ pagination:
   size: 1
   alias: app
 permalink: "{{ app | slug }}/"
+
+eleventyComputed:
+  seoTitle: "{{ metadata.title }} - {{ apps[app].default.name }}"
 ---
 
 {% from "blocks/blocks.njk" import appReviewList, countAppReviews with context %}
