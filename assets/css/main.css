@@ -89,13 +89,14 @@ mwc-tab-bar {
    Drawer
    ========================================================================== */
 
-/* Based on .mdc-typography--headline5 */
+/* Based on .mdc-typography--headline6 */
 .hcr-drawer-subtitle {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   line-height: 2rem;
-  font-weight: 400;
-  letter-spacing: normal;
+  font-weight: 500;
+  letter-spacing: 0.0125em;
 
+  margin: 1rem 0 .5rem 0;
   padding: 0 16px;
 }
 
